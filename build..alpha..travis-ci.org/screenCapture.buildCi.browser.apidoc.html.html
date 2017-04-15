@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/reacttraining/history#readme"
-
-    >history (v4.6.1)</a>
+    <a href="https://github.com/reacttraining/history#readme">history (v4.6.1)</a>
 </h1>
 <h4>Manage session history with JavaScript</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.history">module history</a><ol>
 
@@ -233,9 +226,9 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function createBrowserHistory() {
-  var props = arguments.length &#x3e; 0 &#x26;&#x26; arguments[0] !== undefined ? arguments[0] : {};
+  var props = arguments.length &gt; 0 &amp;&amp; arguments[0] !== undefined ? arguments[0] : {};
 
-  (0, _invariant2.default)(_DOMUtils.canUseDOM, &#x27;Browser history needs a DOM&#x27;);
+  (0, _invariant2.default)(_DOMUtils.canUseDOM, 'Browser history needs a DOM');
 
   var globalHistory = window.history;
   var canUseHistory = (0, _DOMUtils.supportsHistory)();
@@ -248,7 +241,7 @@
       _props$keyLength = props.keyLength,
       keyLength = _props$keyLength === undefined ? 6 : _props$keyLength;
 
-  var basename = props.basename ? (0, _PathUtils.stripTrailingSlash)((0, _PathUtils.addLeadingSlash)(props.basename)) : &#x27;&#x27;;
+  var basename = props.basename ? (0, _PathUtils.stripTrailingSlash)((0, _PathUtils.addLeadingSlash)(props.basename)) : '';
 
   var getDOMLocation = function getDOMLocation(historyState) {
     var _ref = historyState || {},
@@ -303,7 +296,7 @@
       forceNextPop = false;
       setState();
     } else {
-      var action = &#x27;POP&#x27;;
+      var action = 'POP';
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (ok) {
@@ -319,8 +312,8 @@
     var toLocation = history.location;
 
     // TODO: We could probably make this more reliable by
-    // keeping a list of keys we&#x27;ve seen in sessionStorage.
-    // Instead, we just default to 0 for keys we don&#x27;t know.
+    // keeping a list of keys we've seen in sessionStorage.
+    // Instead, we just default to 0 for keys we don't know.
 
     var toIndex = allKeys.indexOf(toLocation.key);
 
@@ -348,11 +341,11 @@
   };
 
   var push = function push(path, state) {
-    (0, _warning2.default)(!((typeof path === &#x27;undefined&#x27; ? &#x27;undefined&#x27; : _typeof(path)) === &#x27;object&#x27; &#x26;&#x26; path.state !== undefined
- &#x26;&#x26; state !== undefined), &#x27;You should avoid providing a 2nd state argument to push when the 1st &#x27; + &#x27;argument is a location-like
- object that already has state; it is ignored&#x27;);
+    (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' &amp;&amp; path.state !== undefined
+ &amp;&amp; state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like
+ object that already has state; it is ignored');
 
-    var action = &#x27;PUSH&#x27;;
+    var action = 'PUSH';
     var location = (0, _LocationUtils.createLocation)(path, state, createKey(), history.location);
 
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -373,9 +366,9 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function createHashHistory() {
-  var props = arguments.length &#x3e; 0 &#x26;&#x26; arguments[0] !== undefined ? arguments[0] : {};
+  var props = arguments.length &gt; 0 &amp;&amp; arguments[0] !== undefined ? arguments[0] : {};
 
-  (0, _invariant2.default)(_DOMUtils.canUseDOM, &#x27;Hash history needs a DOM&#x27;);
+  (0, _invariant2.default)(_DOMUtils.canUseDOM, 'Hash history needs a DOM');
 
   var globalHistory = window.history;
   var canGoWithoutReload = (0, _DOMUtils.supportsGoWithoutReloadUsingHash)();
@@ -383,9 +376,9 @@
   var _props$getUserConfirm = props.getUserConfirmation,
       getUserConfirmation = _props$getUserConfirm === undefined ? _DOMUtils.getConfirmation : _props$getUserConfirm,
       _props$hashType = props.hashType,
-      hashType = _props$hashType === undefined ? &#x27;slash&#x27; : _props$hashType;
+      hashType = _props$hashType === undefined ? 'slash' : _props$hashType;
 
-  var basename = props.basename ? (0, _PathUtils.stripTrailingSlash)((0, _PathUtils.addLeadingSlash)(props.basename)) : &#x27;&#x27;;
+  var basename = props.basename ? (0, _PathUtils.stripTrailingSlash)((0, _PathUtils.addLeadingSlash)(props.basename)) : '';
 
   var _HashPathCoders$hashT = HashPathCoders[hashType],
       encodePath = _HashPathCoders$hashT.encodePath,
@@ -424,7 +417,7 @@
       var location = getDOMLocation();
       var prevLocation = history.location;
 
-      if (!forceNextPop &#x26;&#x26; (0, _LocationUtils.locationsAreEqual)(prevLocation, location)) return; // A hashchange doesn&#x27;t always
+      if (!forceNextPop &amp;&amp; (0, _LocationUtils.locationsAreEqual)(prevLocation, location)) return; // A hashchange doesn't always
  == location change.
 
       if (ignorePath === (0, _PathUtils.createPath)(location)) return; // Ignore this change; we already setState in push/replace
@@ -441,7 +434,7 @@
       forceNextPop = false;
       setState();
     } else {
-      var action = &#x27;POP&#x27;;
+      var action = 'POP';
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (ok) {
@@ -457,8 +450,8 @@
     var toLocation = history.location;
 
     // TODO: We could probably make this more reliable by
-    // keeping a list of paths we&#x27;ve seen in sessionStorage.
-    // Instead, we just default to 0 for paths we don&#x27;t know.
+    // keeping a list of paths we've seen in sessionStorage.
+    // Instead, we just default to 0 for paths we don't know.
 
     var toIndex = allPaths.lastIndexOf((0, _PathUtils.createPath)(toLocation));
 
@@ -488,13 +481,13 @@
   // Public interface
 
   var createHref = function createHref(location) {
-    return &#x27;#&#x27; + encodePath(basename + (0, _PathUtils.createPath)(location));
+    return '#' + encodePath(basename + (0, _PathUtils.createPath)(location));
   };
 
   var push = function push(path, state) {
-    (0, _warning2.default)(state === undefined, &#x27;Hash history cannot push state; it is ignored&#x27;);
+    (0, _warning2.default)(state === undefined, 'Hash history cannot push state; it is ignored');
 
-    var action = &#x27;PUSH&#x27;;
+    var action = 'PUSH';
     var location = (0, _LocationUtils.createLocation)(path, undefined, undefined, history.location);
 
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -516,7 +509,7 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function createLocation(path, state, key, currentLocation) {
   var location = void 0;
-  if (typeof path === &#x27;string&#x27;) {
+  if (typeof path === 'string') {
     // Two-arg form: push(path, state)
     location = (0, _PathUtils.parsePath)(path);
     location.state = state;
@@ -524,21 +517,21 @@
     // One-arg form: push(location)
     location = _extends({}, path);
 
-    if (location.pathname === undefined) location.pathname = &#x27;&#x27;;
+    if (location.pathname === undefined) location.pathname = '';
 
     if (location.search) {
-      if (location.search.charAt(0) !== &#x27;?&#x27;) location.search = &#x27;?&#x27; + location.search;
+      if (location.search.charAt(0) !== '?') location.search = '?' + location.search;
     } else {
-      location.search = &#x27;&#x27;;
+      location.search = '';
     }
 
     if (location.hash) {
-      if (location.hash.charAt(0) !== &#x27;#&#x27;) location.hash = &#x27;#&#x27; + location.hash;
+      if (location.hash.charAt(0) !== '#') location.hash = '#' + location.hash;
     } else {
-      location.hash = &#x27;&#x27;;
+      location.hash = '';
     }
 
-    if (state !== undefined &#x26;&#x26; location.state === undefined) location.state = state;
+    if (state !== undefined &amp;&amp; location.state === undefined) location.state = state;
   }
 
   location.key = key;
@@ -547,7 +540,7 @@
     // Resolve incomplete/relative pathname relative to current location.
     if (!location.pathname) {
       location.pathname = currentLocation.pathname;
-    } else if (location.pathname.charAt(0) !== &#x27;/&#x27;) {
+    } else if (location.pathname.charAt(0) !== '/') {
       location.pathname = (0, _resolvePathname2.default)(location.pathname, currentLocation.pathname);
     }
   }
@@ -567,10 +560,10 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function createMemoryHistory() {
-  var props = arguments.length &#x3e; 0 &#x26;&#x26; arguments[0] !== undefined ? arguments[0] : {};
+  var props = arguments.length &gt; 0 &amp;&amp; arguments[0] !== undefined ? arguments[0] : {};
   var getUserConfirmation = props.getUserConfirmation,
       _props$initialEntries = props.initialEntries,
-      initialEntries = _props$initialEntries === undefined ? [&#x27;/&#x27;] : _props$initialEntries,
+      initialEntries = _props$initialEntries === undefined ? ['/'] : _props$initialEntries,
       _props$initialIndex = props.initialIndex,
       initialIndex = _props$initialIndex === undefined ? 0 : _props$initialIndex,
       _props$keyLength = props.keyLength,
@@ -593,7 +586,7 @@
 
   var index = clamp(initialIndex, 0, initialEntries.length - 1);
   var entries = initialEntries.map(function (entry) {
-    return typeof entry === &#x27;string&#x27; ? (0, _LocationUtils.createLocation)(entry, undefined, createKey()) : (0, _LocationUtils.createLocation
+    return typeof entry === 'string' ? (0, _LocationUtils.createLocation)(entry, undefined, createKey()) : (0, _LocationUtils.createLocation
 )(entry, undefined, entry.key || createKey());
   });
 
@@ -602,11 +595,11 @@
   var createHref = _PathUtils.createPath;
 
   var push = function push(path, state) {
-    (0, _warning2.default)(!((typeof path === &#x27;undefined&#x27; ? &#x27;undefined&#x27; : _typeof(path)) === &#x27;object&#x27; &#x26;&#x26; path.state !== undefined
- &#x26;&#x26; state !== undefined), &#x27;You should avoid providing a 2nd state argument to push when the 1st &#x27; + &#x27;argument is a location-like
- object that already has state; it is ignored&#x27;);
+    (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' &amp;&amp; path.state !== undefined
+ &amp;&amp; state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like
+ object that already has state; it is ignored');
 
-    var action = &#x27;PUSH&#x27;;
+    var action = 'PUSH';
     var location = (0, _LocationUtils.createLocation)(path, state, createKey(), history.location);
 
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -616,7 +609,7 @@
       var nextIndex = prevIndex + 1;
 
       var nextEntries = history.entries.slice(0);
-      if (nextEntries.length &#x3e; nextIndex) {
+      if (nextEntries.length &gt; nextIndex) {
         nextEntries.splice(nextIndex, nextEntries.length - nextIndex, location);
       } else {
         nextEntries.push(location);
@@ -632,11 +625,11 @@
   };
 
   var replace = function replace(path, state) {
-    (0, _warning2.default)(!((typeof path === &#x27;undefined&#x27; ? &#x27;undefined&#x27; : _typeof(path)) === &#x27;object&#x27; &#x26;&#x26; path.state !== undefined
- &#x26;&#x26; state !== undefined), &#x27;You should avoid providing a 2nd state argument to replace when the 1st &#x27; + &#x27;argument is a location-like
- object that already has state; it is ignored&#x27;);
+    (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' &amp;&amp; path.state !== undefined
+ &amp;&amp; state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like
+ object that already has state; it is ignored');
 
-    var action = &#x27;REPLACE&#x27;;
+    var action = 'REPLACE';
     var location = (0, _LocationUtils.createLocation)(path, state, createKey(), history.location);
 
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -651,7 +644,7 @@
   var go = function go(n) {
     var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
 
-    var action = &#x27;POP&#x27;;
+    var action = 'POP';
     var location = history.entries[nextIndex];
 
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -679,11 +672,11 @@
 
   var canGo = function canGo(n) {
     var nextIndex = history.index + n;
-    return nextIndex &#x3e;= 0 &#x26;&#x26; nextIndex &#x3c; history.entries.length;
+    return nextIndex &gt;= 0 &amp;&amp; nextIndex &lt; history.entries.length;
   };
 
   var block = function block() {
-    var prompt = arguments.length &#x3e; 0 &#x26;&#x26; arguments[0] !== undefined ? arguments[0] : false;
+    var prompt = arguments.length &gt; 0 &amp;&amp; arguments[0] !== undefined ? arguments[0] : false;
     return transitionManag ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -703,11 +696,11 @@
       hash = location.hash;
 
 
-  var path = encodeURI(pathname || &#x27;/&#x27;);
+  var path = encodeURI(pathname || '/');
 
-  if (search &#x26;&#x26; search !== &#x27;?&#x27;) path += search.charAt(0) === &#x27;?&#x27; ? search : &#x27;?&#x27; + search;
+  if (search &amp;&amp; search !== '?') path += search.charAt(0) === '?' ? search : '?' + search;
 
-  if (hash &#x26;&#x26; hash !== &#x27;#&#x27;) path += hash.charAt(0) === &#x27;#&#x27; ? hash : &#x27;#&#x27; + hash;
+  if (hash &amp;&amp; hash !== '#') path += hash.charAt(0) === '#' ? hash : '#' + hash;
 
   return path;
 }</pre></li>
@@ -724,7 +717,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function locationsAreEqual(a, b) {
-  return a.pathname === b.pathname &#x26;&#x26; a.search === b.search &#x26;&#x26; a.hash === b.hash &#x26;&#x26; a.key === b.key &#x26;&#x26; (0, _valueEqual2.default)(
+  return a.pathname === b.pathname &amp;&amp; a.search === b.search &amp;&amp; a.hash === b.hash &amp;&amp; a.key === b.key &amp;&amp; (0, _valueEqual2.default)(
 a.state, b.state);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -740,17 +733,17 @@ a.state, b.state);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function parsePath(path) {
-  var pathname = path || &#x27;/&#x27;;
-  var search = &#x27;&#x27;;
-  var hash = &#x27;&#x27;;
+  var pathname = path || '/';
+  var search = '';
+  var hash = '';
 
-  var hashIndex = pathname.indexOf(&#x27;#&#x27;);
+  var hashIndex = pathname.indexOf('#');
   if (hashIndex !== -1) {
     hash = pathname.substr(hashIndex);
     pathname = pathname.substr(0, hashIndex);
   }
 
-  var searchIndex = pathname.indexOf(&#x27;?&#x27;);
+  var searchIndex = pathname.indexOf('?');
   if (searchIndex !== -1) {
     search = pathname.substr(searchIndex);
     pathname = pathname.substr(0, searchIndex);
@@ -760,8 +753,8 @@ a.state, b.state);
 
   return {
     pathname: pathname,
-    search: search === &#x27;?&#x27; ? &#x27;&#x27; : search,
-    hash: hash === &#x27;#&#x27; ? &#x27;&#x27; : hash
+    search: search === '?' ? '' : search,
+    hash: hash === '#' ? '' : hash
   };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -788,23 +781,23 @@ a.state, b.state);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function addEventListener(node, event, listener) {
-  return node.addEventListener ? node.addEventListener(event, listener, false) : node.attachEvent(&#x27;on&#x27; + event, listener);
+  return node.addEventListener ? node.addEventListener(event, listener, false) : node.attachEvent('on' + event, listener);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-&#x27;use strict&#x27;;
+'use strict';
 
 exports.__esModule = true;
-var canUseDOM = exports.canUseDOM = !!(typeof window !== &#x27;undefined&#x27; &#x26;&#x26; window.document &#x26;&#x26; window.
+var canUseDOM = exports.canUseDOM = !!(typeof window !== 'undefined' &amp;&amp; window.document &amp;&amp; window.
 document.createElement);
 
 var addEventListener = exports.addEventListener = function addEventListener(node, event, listener) {
   return node.addEventListener ? node.<span class="apidocCodeKeywordSpan">addEventListener</span>(event, listener, false) : node
-.attachEvent(&#x27;on&#x27; + event, listener);
+.attachEvent('on' + event, listener);
 };
 
 var removeEventListener = exports.removeEventListener = function removeEventListener(node, event, listener) {
-  return node.removeEventListener ? node.removeEventListener(event, listener, false) : node.detachEvent(&#x27;on&#x27; + event,
+  return node.removeEventListener ? node.removeEventListener(event, listener, false) : node.detachEvent('on' + event,
 listener);
 };
 
@@ -837,7 +830,7 @@ var getConfirmation = exports.getConfirmation = function getConfirmation(message
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function isExtraneousPopstateEvent(event) {
-  return event.state === undefined &#x26;&#x26; navigator.userAgent.indexOf(&#x27;CriOS&#x27;) === -1;
+  return event.state === undefined &amp;&amp; navigator.userAgent.indexOf('CriOS') === -1;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -852,20 +845,20 @@ var getConfirmation = exports.getConfirmation = function getConfirmation(message
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function removeEventListener(node, event, listener) {
-  return node.removeEventListener ? node.removeEventListener(event, listener, false) : node.detachEvent(&#x27;on&#x27; + event, listener);
+  return node.removeEventListener ? node.removeEventListener(event, listener, false) : node.detachEvent('on' + event, listener);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var canUseDOM = exports.canUseDOM = !!(typeof window !== &#x27;undefined&#x27; &#x26;&#x26; window.document &#x26;&#x26; window.
+var canUseDOM = exports.canUseDOM = !!(typeof window !== 'undefined' &amp;&amp; window.document &amp;&amp; window.
 document.createElement);
 
 var addEventListener = exports.addEventListener = function addEventListener(node, event, listener) {
-  return node.addEventListener ? node.addEventListener(event, listener, false) : node.attachEvent(&#x27;on&#x27; + event, listener
+  return node.addEventListener ? node.addEventListener(event, listener, false) : node.attachEvent('on' + event, listener
 );
 };
 
 var removeEventListener = exports.removeEventListener = function removeEventListener(node, event, listener) {
   return node.removeEventListener ? node.<span class="apidocCodeKeywordSpan">removeEventListener</span>(event, listener, false) :
-node.detachEvent(&#x27;on&#x27; + event, listener);
+node.detachEvent('on' + event, listener);
 };
 
 var getConfirmation = exports.getConfirmation = function getConfirmation(message, callback) {
@@ -886,7 +879,7 @@ var getConfirmation = exports.getConfirmation = function getConfirmation(message
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function supportsGoWithoutReloadUsingHash() {
-  return window.navigator.userAgent.indexOf(&#x27;Firefox&#x27;) === -1;
+  return window.navigator.userAgent.indexOf('Firefox') === -1;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -903,10 +896,10 @@ var getConfirmation = exports.getConfirmation = function getConfirmation(message
     <li>description and source-code<pre class="apidocCodePre">function supportsHistory() {
   var ua = window.navigator.userAgent;
 
-  if ((ua.indexOf(&#x27;Android 2.&#x27;) !== -1 || ua.indexOf(&#x27;Android 4.0&#x27;) !== -1) &#x26;&#x26; ua.indexOf(&#x27;Mobile Safari&#x27;) !== -1 &#x26;&#x26; ua.indexOf(&#x27;
-Chrome&#x27;) === -1 &#x26;&#x26; ua.indexOf(&#x27;Windows Phone&#x27;) === -1) return false;
+  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) &amp;&amp; ua.indexOf('Mobile Safari') !== -1 &amp;&amp; ua.indexOf('
+Chrome') === -1 &amp;&amp; ua.indexOf('Windows Phone') === -1) return false;
 
-  return window.history &#x26;&#x26; &#x27;pushState&#x27; in window.history;
+  return window.history &amp;&amp; 'pushState' in window.history;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -921,7 +914,7 @@ Chrome&#x27;) === -1 &#x26;&#x26; ua.indexOf(&#x27;Windows Phone&#x27;) === -1) 
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function supportsPopStateOnHashChange() {
-  return window.navigator.userAgent.indexOf(&#x27;Trident&#x27;) === -1;
+  return window.navigator.userAgent.indexOf('Trident') === -1;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -935,3 +928,4 @@ Chrome&#x27;) === -1 &#x26;&#x26; ua.indexOf(&#x27;Windows Phone&#x27;) === -1) 
     ]
 </div>
 </div>
+</body></html>
