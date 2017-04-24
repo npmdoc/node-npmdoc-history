@@ -1,4 +1,7 @@
-# api documentation for  [history (v4.6.1)](https://github.com/reacttraining/history#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-history.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-history) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-history.svg)](https://travis-ci.org/npmdoc/node-npmdoc-history)
+# npmdoc-history
+
+#### api documentation for  [history (v4.6.1)](https://github.com/reacttraining/history#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-history.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-history) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-history.svg)](https://travis-ci.org/npmdoc/node-npmdoc-history)
+
 #### Manage session history with JavaScript
 
 [![NPM](https://nodei.co/npm/history.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/history)
@@ -110,7 +113,8 @@
         "start": "webpack-dev-server -d --content-base ./ --history-api-fallback --inline modules/index.js",
         "test": "karma start --single-run"
     },
-    "version": "4.6.1"
+    "version": "4.6.1",
+    "bin": {}
 }
 ```
 
